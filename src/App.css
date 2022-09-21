@@ -1,0 +1,124 @@
+.container{
+  background-color: #0d1148;
+  display: grid;
+  grid-template-columns: 15% 84%;
+  gap:5px;
+  min-height: 100vh;
+  grid-template-rows: auto;
+}
+.form{
+  background-color: white;
+  padding: 15px;
+}
+.formdata{
+  background-color: white;
+  padding: 15px;
+}
+.sidebar{
+  background-color: #0d1148;
+  padding: 12px;
+}
+.downform{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap:20px;
+  max-width: 95%;
+  margin: auto;
+}
+.show{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 55px;
+  background-color: #ececec;
+  padding: 15px;
+}
+
+.radio{
+  display: flex;
+  margin-right: 35%;
+ 
+}
+.charts{
+  background-color: white;
+    margin: 20px auto;
+    max-width: 95%;
+}
+
+.postName{
+  color: white;
+  line-height: 2px;
+  
+}
+.submitForm{
+  
+  display: inline-block;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 30px;
+  background-color: #9147ff;
+  color: white;
+  padding: 0 20px;
+  width: 40%;
+  margin: auto;
+  padding: auto;
+
+}
+.borderBottom{
+  border: 1px solid #ffffff54;
+  width: 154px;
+}
+.imgAndName{
+  display: flex;
+  gap: 10px;
+}
+.profilePic{
+  border-radius: 50%;
+}
+.userId{
+  color:  #dfdada79;
+  line-height: 2px;
+  font-size: 10px;
+}
+.sldbr{
+  /* border: 1px solid red; */
+}
+.content{
+  /* border: 1px solid red; */
+  margin-top: 50px;
+  color: white;
+  display: grid;
+  
+}
+.midl{
+  /* border: 1px solid white; */
+  height: 35px;
+  background-color: #0d1148;
+  color: white;
+  /* text-align:left; */
+}
+.midl:hover{
+  background-color: #434aa55c;
+}
+select,textarea{
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 98%;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+input{
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 90%;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
