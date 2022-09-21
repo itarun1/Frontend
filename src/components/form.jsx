@@ -18,13 +18,13 @@ import { useState } from "react";
 
  const handleSubmit = (e) => {
   e.preventDefault();
-  axios.post("https://backend-assignment.onrender.com/formData", data).then((res) => {
+  axios.post("/formData", data).then((res) => {
     alert("User Created");
   });
 };
 
   return (
-    <div className="addMeetupContainer">
+    <div className="formContainer">
       <form onSubmit={(e)=>handleSubmit(e)}>
         <h1>Create Alert</h1>
         <input type="text" placeholder="Name" className="name" onChange={(e) => { handleChange(e)}} required />

@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   const login = () => {
-    axios.post("https://backend-assignment.onrender.com/login", user).then((res) => {
+    axios.post("/login", user).then((res) => {
       alert("login successful ");
    localStorage.setItem("user",JSON.stringify(res.data))
    dispatch(userLogin(res.data))

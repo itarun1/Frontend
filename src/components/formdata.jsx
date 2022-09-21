@@ -31,7 +31,7 @@ const rows = [
 export default function BasicTable() {
     const [data,setData]=React.useState([])
     React.useEffect(()=>{
-        axios.post("https://backend-assignment.onrender.com/formData",).then((res)=>{
+        axios.post("/formData",).then((res)=>{
             setData(res.data)
         })
     },[])

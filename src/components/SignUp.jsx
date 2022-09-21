@@ -25,7 +25,7 @@ export const Signup = () => {
 
     if (name && email && password) {
       axios
-        .post("https://backend-assignment.onrender.com/register", user)
+        .post("/register", user)
         .then((res) => {
           alert("register succesful");
           navigate("/");
