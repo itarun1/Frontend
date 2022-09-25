@@ -28,17 +28,11 @@ const Login = () => {
       alert("login successful ");
    localStorage.setItem("user",JSON.stringify(res.data))
    dispatch(userLogin(res.data))
-
       navigate("/main")
     });
   };
 
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
       <div className="l1">
         <h1>Welcome!</h1>
         {/* <h3>Enter your Mail id</h3> */}
@@ -96,7 +90,6 @@ const Login = () => {
           Register
         </Link>
       </div>
-    </div>
   );
 };
 

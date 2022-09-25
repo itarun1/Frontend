@@ -1,5 +1,8 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import axios from "../axios"
+
+
 const options = {
   chart: {
     type: "area",
@@ -78,22 +81,66 @@ const options = {
     }
   },
   legend: {
-    show: false
+    show: true
   }
 };
-const series = [
+
+
+
+
+export default function Charts() {
+  
+  let data1=[]
+  let data2=[]
+  const [datas,setDatas]=useState([])
+useEffect(()=>{
+  a()
+},[])
+const a=()=>{
+  axios.get("/dummy").then((res)=>{
+    setDatas(res.data)
+  })
+}
+datas.map((data)=>{
+  data1.push(data.data1)
+  data2.push(data.data2)
+  return;
+})
+// console.log(data1,"11")
+// console.log(data2,"22")
+
+// let series = [
+//   {
+//     name: "My Score",
+//     data: [2, 23, 31.5, 29,31,51]
+//   },
+//   {
+//     name: "Class Average",
+//     data: [22, 23, 26, 31, 31.5, 29]
+//    }
+// ]
+let veries = [
   {
     name: "My Score",
-    data: [26, 24.5, 27, 29.5, 30.5, 31]
+    data: data1
   },
   {
     name: "Class Average",
-    data: [22, 23, 26, 31, 31.5, 29]
-  }
-];
+    data: data2
+   }
+]
 
-export default function Charts() {
+
   return (
-    <Chart options={options} series={series} type="area" height={350} />
+    <>
+    <div className="chartheader">
+      <div className="graphleft"><h2>Power Cost</h2></div>
+      <div className="graphright"><ul>
+        <li>item 1</li>
+        <li><span><i className="fa-solid fa-gear"></i></span></li>
+        </ul></div>
+    </div>
+    <Chart options={options} series={veries} type="area" height={350} />
+    </>
   );
 }

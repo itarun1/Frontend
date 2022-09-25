@@ -1,19 +1,23 @@
-.l1{width: 400px;
-    border: 1px solid red;
+
+.l1{width: 40rem;
     color: black;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
+    padding: 5rem;
 }
 .mail{
-    padding: 15px 15px 15px 15px;
+    padding: 1rem;
+    margin: auto;
     font-size: 20px;
 }
 .l2{
-    padding: 12px 72px 12px 72px;
+    /* padding: 12px 72px 12px 72px; */
+    padding: 1rem 6rem 1rem 6rem;
     color: white;
     background-color: rgb(40, 215, 228);
     font-size: 17px;
-    border: 1px solid rgba(40, 215, 228)
+    border: 1px solid rgba(40, 215, 228);
 }
 .l2:hover{
     cursor: pointer;
@@ -29,12 +33,12 @@
 .Gbtn1{
     border: none;
    /* border:1px solid slategray;  */
-   margin-left: 30px;
+   margin-left: 3rem;
    background-color: white;
 }
 .Gbtn2{
     border:none; 
-    margin-left: 20px;
+    margin-left: 2rem;
    background-color: white;
 
  }

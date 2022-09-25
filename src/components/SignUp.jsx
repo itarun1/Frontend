@@ -36,11 +36,7 @@ export const Signup = () => {
   };
 
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
+   
       <div className="r2">
         <p className="r1">Join Pc Mobile for Free</p>
         <input
@@ -101,10 +97,9 @@ export const Signup = () => {
         <label className="label" htmlFor="">
           Already have account ?
         </label>
-        <Link className="link" to="/login">
+        <Link className="link" to="/">
           Login
         </Link>
       </div>
-    </div>
   );
 };

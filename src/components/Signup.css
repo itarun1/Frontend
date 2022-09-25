@@ -1,24 +1,23 @@
 .r1{
 
-    line-height: 40px;
+    line-height: 4rem;
     font-size: 25px;
 }
 .r2{
-    /* margin-top: 400px; */
-    width: 400px;
-    border: 1px solid red;
+    width: 40rem;
     color: black;
-    /* background-color: green; */
     margin: auto;
+    align-items: center;
+    padding: 5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .r3{
-    padding: 15px 15px 15px 15px;
+    padding: 1rem 1rem 1rem 1rem;
     font-size: 20px;
     
 }
 .r4{
-    padding: 12px 72px 12px 72px;
+    padding: 1rem 6rem 1rem 6rem;
     color: white;
     background-color: rgb(40, 215, 228);
     font-size: 17px;
@@ -38,12 +37,12 @@
 .Gbtn1{
     border: none;
    /* border:1px solid slategray;  */
-   margin-left: 30px;
+   margin-left: 2rem;
    background-color: white;
 }
 .Gbtn2{
     border:none; 
-    margin-left: 20px;
+    margin-left: 1.5rem;
    background-color: white;
 
 }

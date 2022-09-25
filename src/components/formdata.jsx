@@ -7,7 +7,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import axios from "../axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAlert, getAlerts } from '../Redux/AlertData/action';
+import 'material-icons/iconfont/material-icons.css';
+import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import { Button, IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import Paginationtable from './Pagination';
 function createData(
   Name,
   PriceSignal,
@@ -15,29 +21,48 @@ function createData(
   Value,
   Email,
   ActiveDays,
-  Actions
+  Actions,
+  id
 ) {
-  return { Name, PriceSignal, Criteria, Value, Email,ActiveDays,Actions};
+  return { Name, PriceSignal, Criteria, Value, Email,ActiveDays,Actions,id};
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
-export default function BasicTable() {
-    const [data,setData]=React.useState([])
-    React.useEffect(()=>{
-        axios.post("/formData",).then((res)=>{
-            setData(res.data)
-        })
-    },[])
-    console.log(data,"data")
+export default function BasicTable(query) {
+  const data=useSelector(store=>store.alertData.data)
+  const dispatch=useDispatch()
+  React.useEffect(()=>{
+     dispatch(getAlerts({page:query.page,size:query.size}))
+  },[])
+
+  const rows = [];
+    
+   data.map((e)=>{
+      rows.push(createData(e.name,e.priceSignal,e.criteria,e.value,e.email,e.days,{id:e._id}))
+   })
+   
+   const deleteIcon =
+   (<IconButton onClick={(e)=>{ 
+    console.log(e.target.parentNode)
+   }
+   }>
+    
+     <DeleteOutline color="secondary" />
+   </IconButton>
+   );
+   const handleDelete=(id)=>{
+    dispatch(deleteAlert({id:id,page:query.page,size:query.size}))
+   }
+   const handleEdit=(id)=>{
+    dispatch(deleteAlert({id:id,page:query.page,size:query.size}))
+   }
+   const editIcon = (
+     <IconButton onClick={(e)=>console.log("edited")}>
+       <EditIcon color="primary" />
+     </IconButton>
+   );
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} >
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -53,18 +78,18 @@ export default function BasicTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.Actions.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.Name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.PriceSignal}</TableCell>
+              <TableCell align="right">{row.Criteria}</TableCell>
+              <TableCell align="right">{row.Value}</TableCell>
+              <TableCell align="right">{row.Email}</TableCell>
+              <TableCell align="right">{row.ActiveDays}</TableCell>
+              <TableCell align="right" ><Button onClick={()=>console.log("edit model")}>edit</Button><Button onClick={()=>handleDelete(row.Actions.id)}>delete</Button> </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -73,10 +98,11 @@ export default function BasicTable() {
   );
 }
 
-export const Formdata =()=>{
-
+export const Formdata =({query,paging})=>{
+  console.log(paging,"pagii")
     return(<>
-    <BasicTable/>
+    <BasicTable query={query}/>
+    <div className='pagination-wrapper'><Paginationtable paging={paging}/></div>
     </>
     )
 }

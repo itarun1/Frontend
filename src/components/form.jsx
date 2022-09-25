@@ -1,12 +1,16 @@
 
-import axios from "../axios";
-import { useState } from "react";
- const Form = () => {
+import React,{  useState } from "react";
+import { useDispatch } from "react-redux";
+import { postAlert } from "../Redux/AlertData/action";
+
+ const Form = ( query) => {
+  const dispatch=useDispatch()
   const [data, setData] = useState({
     name: "",
+    priceSignal:"Dk-1",
     criteria: "",
     value: "",
-    days: "",
+    days: "Sun",
     email:"",
     phone: "",
   });
@@ -15,12 +19,9 @@ import { useState } from "react";
   const { className, value } = e.target;
   setData({ ...data, [className]: value });
  }
-
  const handleSubmit = (e) => {
   e.preventDefault();
-  axios.post("/formData", data).then((res) => {
-    alert("User Created");
-  });
+  dispatch(postAlert({payload:data,page:query.page,size:query.size}))
 };
 
   return (
@@ -32,9 +33,9 @@ import { useState } from "react";
         <br />
         <label>Criteria</label>
         <br />
-        <div className="radio">
-        <input type="radio" value="Male" name="criteria" /> Male
-        <input type="radio" value="Female" name="criteria" /> Female
+        <div className="criteria"  onChange={(e) => { handleChange(e)}}>
+        <input type="radio" value="Greater than" name="criteria" className="criteria" required/> Greater
+        <input type="radio" value="Less than" name="criteria" className="criteria"  required/> Less
         </div>
         <br/>
         <input
@@ -45,7 +46,7 @@ import { useState } from "react";
           required
         />
         <br />
-        <select className="days" onChange={(event) => {handleChange(event) }}>
+        <select className="days" onChange={(event) => {handleChange(event) }} required>
           <option value="Sun">Sunday</option>
           <option value="Mon">Monday</option>
           <option value="Tue">Tuesday</option>
@@ -58,10 +59,10 @@ import { useState } from "react";
         <br />
         <label>Criteria</label>
         <br />
-        <select className="criteria" onChange={(event) => {handleChange(event) }}>
-          <option value="1">Dk-1</option>
-          <option value="2">Dk-2</option>
-          <option value="3">Dk-gas</option>
+        <select className="priceSignal" onChange={(event) => {handleChange(event) }} required>
+          <option value="Dk-1">Dk-1</option>
+          <option value="Dk-2">Dk-2</option>
+          <option value="Dk-gas">Dk-gas</option>
         </select>
         <input
           type="text"
@@ -80,7 +81,7 @@ import { useState } from "react";
           required
         />
         <br />
-        <input className="submitForm"  type="submit" />
+        <div className="btn-wrapper"><input className="submitForm"  type="submit" /></div>
       </form>
     </div>
   );
